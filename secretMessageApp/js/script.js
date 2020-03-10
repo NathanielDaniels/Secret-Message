@@ -1,37 +1,37 @@
-const { hash } = window.location
+const { hash } = window.location;
 
-const message = atob(hash.replace('#', ''))
+const message = atob(hash.replace("#", ""));
 
-const input = document.querySelector('#message-input')
-document.querySelector('form').addEventListener('submit', e => {
-  e.preventDefault()
+const input = document.querySelector("#message-input");
+document.querySelector("form").addEventListener("submit", e => {
+  e.preventDefault();
 
-  const encrypted = btoa(input.value)
+  const encrypted = btoa(input.value);
 
-  const inputLink = document.querySelector('#link-input')
-  inputLink.value = `${window.location}#${encrypted}`
-  inputLink.select()
+  const inputLink = document.querySelector("#link-input");
+  inputLink.value = `${window.location}#${encrypted}`;
+  inputLink.select();
 
-  const card1 = document.querySelector('.card1')
-  const card2 = document.querySelector('.card2')
-  card1.classList.add('hidden')
-  card2.classList.remove('hidden')
-})
+  const card1 = document.querySelector(".card1");
+  const card2 = document.querySelector(".card2");
+  card1.classList.add("hidden");
+  card2.classList.remove("hidden");
+});
 
 // Decode Button
-const decodeBtn = document.querySelector('#decodeBtn')
-decodeBtn.addEventListener('click', () => {
-  const newEl = document.createElement('div')
-  newEl.classList.add('card-panel', 'z-depth-4')
-  newEl.innerHTML = `${input.value}`
-  newEl.style =
-    'position: absolute;display: flex; justify-content: center; align-items: center; font-size: 2rem; background: white; color: black; padding: 100px 150px'
+const decodeBtn = document.querySelector("#decodeBtn");
+decodeBtn.addEventListener("click", () => {
+  // const newEl = document.createElement("div");
+  // newEl.classList.add("card-panel", "z-depth-4");
+  // newEl.innerHTML = `${input.value}`;
+  // newEl.style =
+  //   "position: absolute;display: flex; justify-content: center; align-items: center; font-size: 2rem; background: white; color: black; padding: 100px 150px";
 
   if (message) {
-    document.querySelector('#message-form').classList.add('hidden')
-    document.querySelector('#message-show').classList.remove('hidden')
+    document.querySelector("#message-form").classList.add("hidden");
+    document.querySelector("#message-show").classList.remove("hidden");
 
-    document.querySelector('h1').innerHtml = message
+    document.querySelector("h1").innerHtml = message;
   }
 
   // closeX = document.createElement("div");
@@ -43,8 +43,8 @@ decodeBtn.addEventListener('click', () => {
   // console.log(closeX);
   // newEl.append(closeX);
 
-  document.body.appendChild(newEl)
-})
+  document.body.appendChild(newEl);
+});
 
 // const change1 = btoa("Nathan");
 // console.log(change1);
