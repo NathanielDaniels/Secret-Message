@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Secrets Secrets</title>
+  </head>
+  <body>
+    <section class="row">
+      <div class="middle col s8 offset-s2">
+        <div id="message-show" class="card-panel hidden">
+          <h1></h1>
+          <div>
+            <a href="./index.html">Create your Own Secret Message</a>
+          </div>
+        </div>
+        <div class="card-panel card1 z-depth-4">
+          <form action="">
+            <label for="main-input">Enter a Secret Message</label>
+            <input id="message-input" name="main-input" type="text" />
+            <button class="btn z-depth-2 ">Create</button>
+          </form>
+        </div>
+        <div class="card-panel card2 z-depth-4 hidden">
+          <div>
+            <label for="input-link">Share this link with a friend</label>
+            <input id="link-input" name="input-link" type="text" />
+            <button id="decodeBtn" class="btn z-depth-2">Decode</button>
+            <button id="createNewBtn" class="btn z-depth-2 createNewBtn">
+              <a href="./index.html">Create New</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
