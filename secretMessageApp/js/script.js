@@ -23,25 +23,6 @@ document.querySelector("form").addEventListener("submit", e => {
   card2.classList.remove("hidden");
 });
 
-// Decode Button
-// const decodeBtn = document.querySelector("#decodeBtn");
-// decodeBtn.addEventListener("click", () => {
-//   const newEl = document.createElement("div");
-//   newEl.classList.add("card-panel", "z-depth-4");
-//   newEl.innerHTML = `${input.value}`;
-//   newEl.style =
-//     "position: absolute;display: flex; justify-content: center; align-items: center; font-size: 2rem; background: white; color: black; padding: 100px 150px";
-//   closeX = document.createElement("div");
-//   closeX.innerHTML = "X";
-//   closeX.style = "position: absolute; top: 0; right: 15px; cursor: pointer";
-//   closeX.addEventListener("click", () => {
-//     newEl.classList.add("hidden");
-//   });
-//   console.log(closeX);
-//   newEl.append(closeX);
-//   document.body.appendChild(newEl);
-// });
-
 //================================================
 // const change1 = btoa("Nathan");
 // console.log(change1);
