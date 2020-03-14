@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "Nathaniel Daniels",
-  "license": "ISC"
+  "license": "ISC",
+  "bin": {
+    "nls": "index.js"
+  }
 }

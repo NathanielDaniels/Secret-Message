@@ -1,15 +1,17 @@
-const fs = require('fs')
+#!/usr/bin/env node
+
+const fs = require("fs");
 
 console.log(
   fs.readdir(process.cwd(), (err, files) => {
     if (err) {
-      console.log('Houston, we have a problem')
-      console.log(err)
-      throw new Error(err)
+      console.log("Houston, we have a problem");
+      console.log(err);
+      throw new Error(err);
     }
-    console.log(files)
+    console.log(files);
   })
-)
+);
 // function(exports, require, module, __filename, __dirname) {
 // const message = require('./myscript')
 // console.log(message) //Hi There!
