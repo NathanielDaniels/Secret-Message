@@ -1,17 +1,28 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
+const fs = require('fs')
 
 console.log(
-  fs.readdir(process.cwd(), (err, files) => {
+  fs.readdir(process.cwd(), (err, filenames) => {
     if (err) {
-      console.log("Houston, we have a problem");
-      console.log(err);
-      throw new Error(err);
+      console.log('Houston, we have a problem')
+      console.log(err)
+      throw new Error(err)
     }
-    console.log(files);
+    // BAD CODE HERE!
+    for (let filename of filenames) {
+      fs.lstat(filename, (err, stats) => {
+        if (err) {
+          console.log(err)
+        }
+
+        console.log(filename, stats.isFile())
+      })
+    }
+    // /BAD CODE HERE!
   })
-);
+)
+
 // function(exports, require, module, __filename, __dirname) {
 // const message = require('./myscript')
 // console.log(message) //Hi There!
