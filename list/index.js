@@ -1,16 +1,61 @@
 #!/usr/bin/env node
 
-const fs = require('fs')
+const fs = require("fs");
+const util = require("util");
+const chalk = require("chalk");
 
-console.log(
-  fs.readdir(process.cwd(), (err, filenames) => {
-    if (err) {
-      console.log('Houston, we have a problem')
-      console.log(err)
-      throw new Error(err)
+// METHOD #2
+// const lstat = util.promisify(fs.lstat);
+
+// METHOD #3
+const { lstat } = fs.promises;
+
+const targetDir = process.argv[1] || process.cwd();
+console.log(targetDir);
+
+fs.readdir(process.cwd(), async (err, filenames) => {
+  if (err) {
+    console.log("Houston, we have a problem");
+    console.log(err);
+  }
+
+  for (let filename of filenames) {
+    try {
+      const stats = await lstat(filename);
+      // console.log(filename, stats.isFile());
+    } catch (err) {
+      console.log(err);
     }
-  })
-)
+  }
+  const statPromises = filenames.map(filename => {
+    return lstat(filename);
+  });
+
+  const allStats = await Promise.all(statPromises);
+
+  for (let stats of allStats) {
+    const index = allStats.indexOf(stats);
+
+    if (stats.isFile()) {
+      console.log(chalk.blue(filenames[index]), stats.isFile());
+    } else {
+      console.log(chalk.bold(filenames[index]), stats.isFile());
+    }
+  }
+});
+
+// METHOD #1
+// const lstat = filename => {
+//   return new Promise((resolve, reject) => {
+//     fs.lstat(filename, (err, stats) => {
+//       if (err) {
+//         reject(err)
+//       }
+
+//       resolve(stats)
+//     })
+//   })
+// }
 
 // function(exports, require, module, __filename, __dirname) {
 // const message = require('./myscript')
