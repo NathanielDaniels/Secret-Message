@@ -11,7 +11,7 @@ const chalk = require("chalk");
 const { lstat } = fs.promises;
 
 const targetDir = process.argv[1] || process.cwd();
-console.log(targetDir);
+// console.log(targetDir);
 
 fs.readdir(process.cwd(), async (err, filenames) => {
   if (err) {
@@ -24,14 +24,16 @@ fs.readdir(process.cwd(), async (err, filenames) => {
       const stats = await lstat(filename);
       // console.log(filename, stats.isFile());
     } catch (err) {
-      console.log(err);
+      console.log("err0r:", err);
     }
   }
   const statPromises = filenames.map(filename => {
+    // console.log(lstat(filename));
     return lstat(filename);
   });
 
   const allStats = await Promise.all(statPromises);
+  console.log(allStats);
 
   for (let stats of allStats) {
     const index = allStats.indexOf(stats);
